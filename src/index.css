@@ -95,7 +95,7 @@ h1 {
 .bottom {
   display: flex;
   justify-content: space-evenly;
-  align-items:center;
+  align-items: center;
   width: 100%;
   padding: 1rem;
   margin: 1rem auto;

@@ -14,10 +14,14 @@ function App() {
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
+      axios.get(url)
+      .then((response) => {
         setData(response.data)
         console.log(response.data)
-      })  
+      })
+      .catch((error) => {
+        alert("City name entered incorrectly. Enter location name :)");
+      });
       /* getLocation(); */
       setLocation('');
     }
@@ -44,7 +48,7 @@ function App() {
       </div>
 
       <div className='container'>
-
+      
         <div className='top'>
           <div className='location'>
             <p>{data.name}</p>
@@ -58,6 +62,7 @@ function App() {
           </div>
         </div> {/* top */}
 
+       {data.name !== undefined && (
         <div className='bottom'>
           <div className='feeling'>
             {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}&#176;</p> : null}
@@ -73,11 +78,10 @@ function App() {
             {data.main ? <p className='bold'>{data.wind.speed.toFixed()} m/s</p> : null}
             <p>Wind speed</p>
           </div>
+        </div> 
+        )}
 
-        </div> {/* bottom */}
-
-      </div> {/* container */}
-         
+      </div> {/* container */} 
     </div>
   );
 }
